@@ -41,7 +41,7 @@ def add_post(request):
       post = post_form.save(commit = False)
       post.user = request.user
       post.save()
-      return redirect('home')
+      return redirect('profile')
 
   else:
     post_form = postForm()
@@ -93,7 +93,7 @@ def update_profile(request):
     'user_form':user_form,
     'profile_form':profile_form
   }
-  return render(request,'profile/update.html',params)
+  return render(request,'profile/update_user.html',params)
 
 @login_required
 def comment(request,post_id):
@@ -106,7 +106,7 @@ def comment(request,post_id):
       comment.user = request.user
       comment.post = post
       comment.save() 
-  return redirect('home')
+  return redirect('profile')
 
 def likes(request, post_id):
     current_user = request.user
@@ -122,6 +122,6 @@ def delete(request,post_id):
   post = Post.objects.get(pk=post_id)
   if post:
     post.delete_post()
-  return redirect('home')
+  return redirect('profile')
 
 

@@ -22,7 +22,7 @@ class Post(models.Model):
         return posts
 
     @property
-    def add_comment(self):
+    def added_comments(self):
         return self.comments.all()
 
     @property
