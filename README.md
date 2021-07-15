@@ -22,13 +22,12 @@ To access this project on your local files, you can clone it using these steps
 * Python Venv
 * whitenoise
 * gunicorn
-*****
 ## Technologies Used
 * HTML
 * Python 3
 * JavaScript
 * CSS
 ### Live Site
-View [live](https://github.com/LornaMoringa/profile.git)
+View [live](https://lorna-instag.herokuapp.com/)
 ### Licence
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](/LICENSE)
