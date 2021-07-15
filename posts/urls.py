@@ -5,7 +5,7 @@ from . import views as app_views
 
 urlpatterns = [
   path('accounts/register/',app_views.register,name='register'),
-  path('post/<int:post_id>',app_views.detail,  name='post.detail'),
+  path('details/<int:post_id>',app_views.detail,  name='post.detail'),
   path('',auth_views.LoginView.as_view(template_name = 'registration/login.html'),name='login'),
   path('Add_image/',app_views.post,name='post'),
   path('logout/',auth_views.LogoutView.as_view(template_name = 'registration/logout.html'),name='logout'),
