@@ -23,16 +23,6 @@ def register(request):
 
   return render(request,'registration/registration_form.html',{"form":form})
 
-
-@login_required
-def home(request):
-  post_form = postForm()
-  users = User.objects.all()
-  posts = Post.get_posts()
-  add_comment = MakeCommentForm()
-  
-  return render (request,'home.html',{"posts":posts,"add_comment":add_comment,"post":post_form,"users":users})
-
 @login_required
 def profile(request):
   add_comment = MakeCommentForm()
@@ -55,7 +45,7 @@ def add_post(request):
 
   else:
     post_form = postForm()
-  return render(request,'post.html',{"post_form":post_form})
+  return render(request,'add_post.html',{"post_form":post_form})
 
 def post_details(request,post_id):
   current_user = request.user
@@ -118,7 +108,7 @@ def comment(request,post_id):
       comment.save() 
   return redirect('home')
 
-def like(request, post_id):
+def likes(request, post_id):
     current_user = request.user
     post=Post.objects.get(id=post_id)
     new_like,created= Like.objects.get_or_create(liker=current_user, post=post)
