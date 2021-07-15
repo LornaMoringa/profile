@@ -18,3 +18,7 @@ class Profile(models.Model):
   bio = models.TextField()
   user = models.OneToOneField(User,on_delete = models.CASCADE)
 
+class Comment(models.Model):
+  comment = models.TextField()
+  post = models.ForeignKey(Post,on_delete = models.CASCADE,related_name='comments')
+  user = models.ForeignKey(User,on_delete = models.CASCADE,related_name='comments')
