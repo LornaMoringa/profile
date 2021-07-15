@@ -14,10 +14,20 @@ To access this project on your local files, you can clone it using these steps
 1. Use this command to clone `$ git clone https://github.com/LornaMoringa/profile.git
 1. This will clone the repositoty into your local folder
 1. _Enjoy :)_
-### Technologies Used
-1. HTML
-1. CSS
-1. Python
+## Dependencies
+* django-bootstrap
+* Pillow
+* psycopg2
+* python-decouple
+* Python Venv
+* whitenoise
+* gunicorn
+*****
+## Technologies Used
+* HTML
+* Python 3
+* JavaScript
+* CSS
 ### Live Site
 View [live](https://github.com/LornaMoringa/profile.git)
 ### Licence
