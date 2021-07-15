@@ -50,3 +50,11 @@ class Comment(models.Model):
   comment = models.TextField()
   post = models.ForeignKey(Post,on_delete = models.CASCADE,related_name='comments')
   user = models.ForeignKey(User,on_delete = models.CASCADE,related_name='comments')
+
+  @classmethod
+  def show_comments(cls,post_id):
+    comments = cls.objects.filter(post_id = post_id)
+    return comments
+
+  def __str__(self):
+    return "%s comment" % self.post
