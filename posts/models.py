@@ -46,12 +46,23 @@ class Profile(models.Model):
   bio = models.TextField()
   user = models.OneToOneField(User,on_delete = models.CASCADE)
 
-class Like(models.Model):
-  post =models.ForeignKey(Post, on_delete = models.CASCADE,related_name='postlikes')
-  liker=models.ForeignKey(User,on_delete = models.CASCADE,related_name='userlikes')
+  @receiver(post_save , sender = User)
+  def create_profile(instance,sender,created,**kwargs):
+    if created:
+      Profile.objects.create(user = instance)
+
+  @receiver(post_save,sender = User)
+  def save_profile(sender,instance,**kwargs):
+    instance.profile.save()
+
+
+  @classmethod
+  def search_profiles(cls,search_term):
+    profiles = cls.objects.filter(user__username__icontains = search_term).all()
+    return profiles
 
   def __str__(self):
-    return "%s like" % self.post
+    return "%s profile" % self.user
 
 class Comment(models.Model):
   comment = models.TextField()
@@ -65,3 +76,10 @@ class Comment(models.Model):
 
   def __str__(self):
     return "%s comment" % self.post
+
+class Like(models.Model):
+  post =models.ForeignKey(Post, on_delete = models.CASCADE,related_name='postlikes')
+  liker=models.ForeignKey(User,on_delete = models.CASCADE,related_name='userlikes')
+
+  def __str__(self):
+    return "%s like" % self.post
