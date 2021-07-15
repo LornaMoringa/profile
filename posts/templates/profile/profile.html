@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="{{user.profile.profile_post.url}}" alt="{{user.profile_post.url}}"
+            style="height: 20vh; width:20vh; border-radius:50%" class="rounded-circle account-img">
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4">
+              <p class="">{{user.username}}</p>
+            </div>
+            <div class="col-md-4">
+              <p class="">{{user.profile.bio}}</p>
+            </div>
+            <div class="col-md-4">
+              <p><a href="{% url 'update_profile' %}">
+                  <button class="btn btn-info ml-4 pl-3">Update Details</button>
+                </a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-4">
+      {% if posts %}
+      {% for post in posts %}
+      <div class="profile">
+        <div class="row">
+          <div class="col-md-2">
+            <p><a href="{% url 'users_profile' post.user.id %}"><img class="profile_post"
+                  src="{{ post.user.profile.profile_post.url }}" alt="{{ post.profile.name }}"></p>
+          </div>
+          <div class="col-md-2">
+            <p class="username" style="margin-top: 5px;">{{ post.user.username }}</p>
+          </div>
+        </div>
+        </a>
+      </div>
+      <div class="card-header">
+        <a href="{% url 'post.detail' post.id %}" class="open-project"><img src="{{post.post.url}}" alt=""
+            class="img-thumbnail"></a>
+      </div>
+      <div class="card-body">
+        <div>
+          <a href=" {% url 'like' post_id=post.id %}">
+            <button class="btn btn-primary"></button></a>
+          <p><strong class="ml-3 post_likes">{{post.saved_likes}} </strong>
+            <strong>Likes</strong>
+          </p>
+        </div>
+        <div>
+          <p class=""><strong>{{post.name}}</strong> {{post.image_caption}}</p>
+        </div>
+        {% for comment in post.saved_comments %}
+        <p class="ml-3"><span class="font-weight-bold text-success">{{comment.user.username}}</span>:
+          {{comment.comment}}</p>
+        {% endfor %}
+        <form action="{% url 'commentFunction' post_id=post.id %}" method="post">
+          {% csrf_token %}
+          {% bootstrap_form comment_form %}
+          <input type="submit" class="btn btn-success btn-lg" style="margin-bottom: 10px;" value="Comment">
+        </form>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
