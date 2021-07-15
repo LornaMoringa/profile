@@ -13,6 +13,34 @@ class Post(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     image_caption = models.TextField()
 
+    def save_post(self):
+     self.save()
+
+    @classmethod
+    def get_posts(cls):
+        posts = cls.objects.all()
+        return posts
+
+    @property
+    def add_comment(self):
+        return self.comments.all()
+
+    @property
+    def added_like(self):
+        return self.postlikes.count()
+
+    @classmethod
+    def search_users(cls,search_term):
+        posts = cls.objects.filter(post_name__icontains = search_term).all()
+        return posts
+
+    def delete_post(self):
+        self.delete()
+
+    def __str__(self):
+        return "%s post" % self.post_name
+
+
 class Profile(models.Model):
   picture = CloudinaryField('image')
   bio = models.TextField()
