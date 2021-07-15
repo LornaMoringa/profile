@@ -46,6 +46,13 @@ class Profile(models.Model):
   bio = models.TextField()
   user = models.OneToOneField(User,on_delete = models.CASCADE)
 
+class Like(models.Model):
+  post =models.ForeignKey(Post, on_delete = models.CASCADE,related_name='postlikes')
+  liker=models.ForeignKey(User,on_delete = models.CASCADE,related_name='userlikes')
+
+  def __str__(self):
+    return "%s like" % self.post
+
 class Comment(models.Model):
   comment = models.TextField()
   post = models.ForeignKey(Post,on_delete = models.CASCADE,related_name='comments')
