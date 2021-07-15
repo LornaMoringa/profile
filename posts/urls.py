@@ -14,7 +14,7 @@ urlpatterns = [
   re_path(r'^user_page/(?P<pk>\d+)$',app_views.posts_profile,name='posts_profile'),
   re_path(r'^comment/(?P<post_id>\d+)$',app_views.comment,name='comment'),
   re_path(r'^like/(?P<post_id>\d+)', app_views.likes, name='likes'),
-  re_path(r'^search/$',app_views.search,name='search'),
+  re_path(r'^search/$',app_views.search_users,name='search'),
   re_path(r'^delete/(?P<post_id>\d+)$',app_views.delete,name='delete'),
 
 

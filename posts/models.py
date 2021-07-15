@@ -31,7 +31,7 @@ class Post(models.Model):
 
     @classmethod
     def search_users(cls,search_term):
-        posts = cls.objects.filter(post_name__icontains = search_term).all()
+        posts = cls.objects.filter(name__icontains = search_term).all()
         return posts
 
     def delete_post(self):

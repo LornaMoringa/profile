@@ -57,11 +57,11 @@ def post_details(request,post_id):
 
 
 @login_required
-def search(request):
+def search_users(request):
   if 'search_user' in request.GET and request.GET["search_user"]:
     search_term = request.GET.get('search_user')
     users = Profile.search_profiles(search_term)
-    posts = Post.search_posts(search_term)
+    posts = Post.search_users(search_term)
     return render(request,'search.html',{"users":users,"posts":posts})
   else:
     return render(request,'search.html')
@@ -71,10 +71,10 @@ def posts_profile(request,pk):
   add_comment = MakeCommentForm()
   user = User.objects.get(pk = pk)
   posts = Post.objects.filter(user = user)
-  c_user = request.user
+  current_user = request.user
   
   return render(request,'profile/posts_profile.html',{"user":user,'add_comment':add_comment,
-"posts":posts,"c_user":c_user})
+"posts":posts,"current_user":current_user})
 
 @login_required
 def update_profile(request):
