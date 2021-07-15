@@ -77,13 +77,13 @@ def search(request):
     return render(request,'search.html')
 
 @login_required
-def users_profile(request,pk):
+def posts_profile(request,pk):
   add_comment = MakeCommentForm()
   user = User.objects.get(pk = pk)
   posts = Post.objects.filter(user = user)
   c_user = request.user
   
-  return render(request,'profile/users_profile.html',{"user":user,'add_comment':add_comment,
+  return render(request,'profile/posts_profile.html',{"user":user,'add_comment':add_comment,
 "posts":posts,"c_user":c_user})
 
 @login_required
