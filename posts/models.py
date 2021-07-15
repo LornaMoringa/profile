@@ -12,3 +12,8 @@ class Post(models.Model):
     name = models.CharField(max_length=30)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     image_caption = models.TextField()
+
+class Profile(models.Model):
+  picture = CloudinaryField('image')
+  bio = models.TextField()
+  user = models.OneToOneField(User,on_delete = models.CASCADE)
