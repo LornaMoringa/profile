@@ -1,11 +1,11 @@
 {% load bootstrap3 %}
 
 <div class="container-fluid">
-  <nav class="navbar navbar-default">
+  <nav style="background-color: rgb(33, 110, 211);" class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="">Instagram Clone </a>
+        <a class="navbar-brand" style="color: white;" href="{% url 'profile' %}">Instagram</a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
           data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
@@ -31,20 +31,20 @@
           </li>
             {% if user.is_authenticated %}
             <li>
-                <a href="{% url 'profile'%}">Profile</a>
+                <a style="color: white;" href="{% url 'profile'%}">Profile</a>
             </li>
             <li>
-                <a href="{% url 'add_post'%}">Post</a>
+                <a style="color: white;" href="{% url 'add_post'%}">Post</a>
             </li>
             <li>
-                <a href="/logout">Logout</a>
+                <a style="color: white;" href="/logout">Logout</a>
             </li>
             {% else %}
             <li>
-                <a href="{% url 'register'%}">Sigup</a>
+                <a style="color: white;" href="{% url 'register'%}">Sigup</a>
             </li>
             <li>
-                <a href="{% url 'login'%}">Login</a>
+                <a style="color: white;" href="{% url 'login'%}">Login</a>
             </li>
           {% endif %}
       </div>

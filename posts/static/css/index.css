@@ -1,0 +1,36 @@
+body {background-color: rgb(238, 236, 236);}
+nav {
+  color: #67727c !important;
+  height: 8vh !important;
+  font-size: 25;
+  padding-top: 1vh;
+}
+a {
+  color: rgb(141, 98, 17);
+  font-weight: 900;
+}
+h2,h1 {
+  color: #0c3cd8;
+}
+
+.link:hover {
+  color: blue;
+  font-weight: 900;
+}
+
+img {
+  width: 100%;
+}
+
+.menu {
+  color: white !important;
+}
+
+
+@media (max-width: 1000px) {
+  nav {
+    height: auto !important;
+    padding-top: 1vh;
+  }
+  
+}

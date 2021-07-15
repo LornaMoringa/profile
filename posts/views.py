@@ -53,7 +53,7 @@ def post_details(request,post_id):
     post = get_object_or_404(Post, pk = post_id)
   except ObjectDoesNotExist:
     raise Http404()
-  return render(request, 'post_details.html', {'post':post,'current_user':current_user})
+  return render(request, 'details.html', {'post':post,'current_user':current_user})
 
 
 @login_required
